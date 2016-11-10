@@ -2,7 +2,7 @@ package sri.templates.diode.screens
 
 import sri.core._
 import sri.diode.ModelProxy
-import sri.templates.diode.actions.Action
+import sri.templates.diode.actions.AppAction
 import sri.templates.diode.models.Count
 import sri.templates.diode.store.AppCircuit
 import sri.templates.diode.styles.GlobalStyle
@@ -22,20 +22,18 @@ object CounterScreen {
       div(className = GlobalStyle.center)(
         h1()(s"Count : ${props().i}"),
         div()(
-          button(name = "Increase", onClick = (e: ReactEventH) => AppCircuit.dispatch(Action.Increase(2)))(h4()("Increase")),
-          button(name = "Increase", onClick = (e: ReactEventH) => AppCircuit.dispatch(Action.Decrease(2)))(h4()("Dcrease")),
-          button(name = "Increase", onClick = (e: ReactEventH) => AppCircuit.dispatch(Action.Reset))(h4()("Reset"))
+          button(name = "Increase", onClick = (e: ReactEventH) => AppCircuit.dispatch(AppAction.Increase(2)))(h4()("Increase")),
+          button(name = "Increase", onClick = (e: ReactEventH) => AppCircuit.dispatch(AppAction.Decrease(2)))(h4()("Dcrease")),
+          button(name = "Increase", onClick = (e: ReactEventH) => AppCircuit.dispatch(AppAction.Reset))(h4()("Reset"))
         )
       )
     }
 
     override def componentDidMount(): Unit = {
-      props.dispatch(Action.Reset)
+      props.dispatch(AppAction.Reset)
     }
   }
 
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  def apply(p: ModelProxy[Count], key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElement(ctor, p, key = key, ref = ref)
+  def apply(p: ModelProxy[Count], key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) = makeElement[Component](p, key = key, ref = ref)
 }

@@ -1,9 +1,7 @@
 package sri.templates.diode.styles
 
 import scalacss.Defaults._
-import sri.scalacss.Defaults._
 
-import scalacss.ext.CssReset
 
 object GlobalStyle extends StyleSheet.Inline {
 

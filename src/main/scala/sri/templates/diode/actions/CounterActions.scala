@@ -1,15 +1,13 @@
 package sri.templates.diode.actions
 
-import diode.data.{Empty, Pot, PotAction}
-
-import scala.concurrent.Future
+import diode.Action
 
 trait CounterActions {
 
-  case class Increase(i: Int)
+  case class Increase(i: Int) extends Action
 
-  case class Decrease(i: Int)
+  case class Decrease(i: Int) extends Action
 
-  object Reset
+  object Reset extends Action
 
 }

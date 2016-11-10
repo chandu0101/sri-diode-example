@@ -44,7 +44,7 @@ object TopNav {
     val navMenu = style(display.flex,
       flexDirection.row,
       alignItems.center,
-      backgroundColor := Colors.gold,
+      backgroundColor :=! Colors.gold,
       margin.`0`,
       paddingLeft(40 px))
 
@@ -52,11 +52,11 @@ object TopNav {
       styleS(padding(20.px),
         fontSize :=! "1.5em",
         cursor.pointer,
-        color := "rgb(244, 233, 233)",
-        marginLeft := "10px",
-        marginRight := "10px",
-        mixinIfElse(selected)(backgroundColor := Colors.darkGold,
-          fontWeight._500)(backgroundColor := Colors.transparent,
+        color :=! "rgb(244, 233, 233)",
+        marginLeft :=! "10px",
+        marginRight :=! "10px",
+        mixinIfElse(selected)(backgroundColor :=! Colors.darkGold,
+          fontWeight._500)(backgroundColor :=! Colors.transparent,
             fontWeight.normal)
       )
     })
@@ -64,12 +64,11 @@ object TopNav {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
 
-  ctor.contextTypes = router.routerContextTypes
+  js.constructorOf[Component].contextTypes = router.routerContextTypes
 
 
-  def apply(ref: js.UndefOr[String] = "", key: js.Any = {}) = createElementNoProps(ctor)
+  def apply(ref: js.UndefOr[String] = "", key: js.Any = {}) = makeElement[Component]
 
 }
 

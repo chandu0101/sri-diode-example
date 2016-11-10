@@ -1,4 +1,4 @@
-# sri-diode-todomvc
+# sri-diode-example
 
 sri-web and diode example
 
